@@ -1,82 +1,173 @@
-# MySQL Example
+[![Blitz.js](https://raw.githubusercontent.com/blitz-js/art/master/github-cover-photo.png)](https://blitzjs.com)
 
-This is an example of using [MySQL](https://www.mysql.com/) in a Next.js project.
+This is a [Blitz.js](https://github.com/blitz-js/blitz) app.
 
-## Demo
+# **db-bench**
 
-### [https://next-mysql.vercel.app](https://next-mysql.vercel.app/)
+## Getting Started
 
-## Deploy your own
+Run your app in the development mode.
 
-Once you have access to [the environment variables you'll need](#step-5-set-up-environment-variables), deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-mysql&project-name=nextjs-mysql&repository-name=nextjs-mysql&env=MYSQL_HOST,MYSQL_DATABASE,MYSQL_USERNAME,MYSQL_PASSWORD&envDescription=Required%20to%20connect%20the%20app%20with%20MySQL&envLink=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-mysql%23step-2-set-up-environment-variables&demo-title=Next.js%20%2B%20MySQL%20Demo&demo-description=A%20simple%20app%20demonstrating%20Next.js%20and%20MySQL%20&demo-url=https%3A%2F%2Fnext-mysql.vercel.app%2F)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-mysql next-mysql-app
-# or
-yarn create next-app --example with-mysql next-mysql-app
+```
+blitz dev
 ```
 
-## Configuration
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Step 1. Set up a MySQL database
+## Environment Variables
 
-Set up a MySQL server either locally or any cloud provider.
+Ensure the `.env.local` file has required environment variables:
 
-### Step 2. Set up environment variables
-
-Copy the `env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
-
-```bash
-cp .env.local.example .env.local
+```
+DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/db-bench
 ```
 
-Set each variable on `.env.local`:
+Ensure the `.env.test.local` file has required environment variables:
 
-- `MYSQL_HOST` - Your MySQL host URL.
-- `MYSQL_DATABASE` - The name of the MySQL database you want to use.
-- `MYSQL_USERNAME` - The name of the MySQL user with access to database.
-- `MYSQL_PASSWORD` - The passowrd of the MySQL user.
-
-### Step 3. Run migration script
-
-You'll need to run a migration to create the necessary table for the example.
-
-```bash
-npm run migrate
-# or
-yarn migrate
+```
+DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/db-bench_test
 ```
 
-### Step 4. Run Next.js in development mode
+## Tests
 
-```bash
-npm install
-npm run dev
-# or
-yarn install
-yarn dev
+Runs your tests using Jest.
+
+```
+yarn test
 ```
 
-Your app should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
+Blitz comes with a test setup using [Jest](https://jestjs.io/) and [react-testing-library](https://testing-library.com/).
 
-## Deploy on Vercel
+## Commands
 
-You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Blitz comes with a powerful CLI that is designed to make development easy and fast. You can install it with `npm i -g blitz`
 
-#### Deploy Your Local Project
+```
+  blitz [COMMAND]
 
-To deploy your local project to Vercel, push it to GitHub/GitLab/Bitbucket and [import to Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example).
+  dev       Start a development server
+  build     Create a production build
+  start     Start a production server
+  export    Export your Blitz app as a static application
+  prisma    Run prisma commands
+  generate  Generate new files for your Blitz project
+  console   Run the Blitz console REPL
+  install   Install a recipe
+  help      Display help for blitz
+  test      Run project tests
+```
 
-**Important**: When you import your project on Vercel, make sure to click on **Environment Variables** and set them to match your `.env.local` file.
+You can read more about it on the [CLI Overview](https://blitzjs.com/docs/cli-overview) documentation.
 
-#### Deploy from Our Template
+## What's included?
 
-Alternatively, you can deploy using our template by clicking on the Deploy button below.
+Here is the starting structure of your app.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-mysql&project-name=nextjs-mysql&repository-name=nextjs-mysql&env=MYSQL_HOST,MYSQL_DATABASE,MYSQL_USERNAME,MYSQL_PASSWORD&envDescription=Required%20to%20connect%20the%20app%20with%20MySQL&envLink=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-mysql%23step-2-set-up-environment-variables&demo-title=Next.js%20%2B%20MySQL%20Demo&demo-description=A%20simple%20app%20demonstrating%20Next.js%20and%20MySQL%20&demo-url=https%3A%2F%2Fnext-mysql.vercel.app%2F)
+```
+db-bench
+├── app/
+│   ├── api/
+│   ├── auth/
+│   │   ├── components/
+│   │   │   ├── LoginForm.tsx
+│   │   │   └── SignupForm.tsx
+│   │   ├── mutations/
+│   │   │   ├── changePassword.ts
+│   │   │   ├── forgotPassword.test.ts
+│   │   │   ├── forgotPassword.ts
+│   │   │   ├── login.ts
+│   │   │   ├── logout.ts
+│   │   │   ├── resetPassword.test.ts
+│   │   │   ├── resetPassword.ts
+│   │   │   └── signup.ts
+│   │   ├── pages/
+│   │   │   ├── forgot-password.tsx
+│   │   │   ├── login.tsx
+│   │   │   ├── reset-password.tsx
+│   │   │   └── signup.tsx
+│   │   └── validations.ts
+│   ├── core/
+│   │   ├── components/
+│   │   │   ├── Form.tsx
+│   │   │   └── LabeledTextField.tsx
+│   │   ├── hooks/
+│   │   │   └── useCurrentUser.ts
+│   │   └── layouts/
+│   │       └── Layout.tsx
+│   ├── pages/
+│   │   ├── 404.tsx
+│   │   ├── _app.tsx
+│   │   ├── _document.tsx
+│   │   ├── index.test.tsx
+│   │   └── index.tsx
+│   └── users/
+│       └── queries/
+│           └── getCurrentUser.ts
+├── db/
+│   ├── index.ts
+│   ├── schema.prisma
+│   └── seeds.ts
+├── integrations/
+├── mailers/
+│   └── forgotPasswordMailer.ts
+├── public/
+│   ├── favicon.ico*
+│   └── logo.png
+├── test/
+│   ├── setup.ts
+│   └── utils.tsx
+├── README.md
+├── babel.config.js
+├── blitz.config.js
+├── jest.config.js
+├── package.json
+├── tsconfig.json
+├── types.d.ts
+├── types.ts
+└── yarn.lock
+```
+
+These files are:
+
+- The `app/` folder is a container for most of your project. This is where you’ll put any pages or API routes.
+
+- `db/` is where your database configuration goes. If you’re writing models or checking migrations, this is where to go.
+
+- `public/` is a folder where you will put any static assets. If you have images, files, or videos which you want to use in your app, this is where to put them.
+
+- `integrations/` is a folder to put all third-party integrations like with Stripe, Sentry, etc.
+
+- `test/` is a folder where you can put test utilities and integration tests.
+
+- `package.json` contains information about your dependencies and devDependencies. If you’re using a tool like `npm` or `yarn`, you won’t have to worry about this much.
+
+- `tsconfig.json` is our recommended setup for TypeScript.
+
+- `.babelrc.js`, `.env`, etc. ("dotfiles") are configuration files for various bits of JavaScript tooling.
+
+- `blitz.config.js` is for advanced custom configuration of Blitz. It extends [`next.config.js`](https://nextjs.org/docs/api-reference/next.config.js/introduction).
+
+- `jest.config.js` contains config for Jest tests. You can [customize it if needed](https://jestjs.io/docs/en/configuration).
+
+You can read more about it in the [File Structure](https://blitzjs.com/docs/file-structure) section of the documentation.
+
+### Tools included
+
+Blitz comes with a set of tools that corrects and formats your code, facilitating its future maintenance. You can modify their options and even uninstall them.
+
+- **ESLint**: It lints your code: searches for bad practices and tell you about it. You can customize it via the `.eslintrc.js`, and you can install (or even write) plugins to have it the way you like it. It already comes with the [`blitz`](https://github.com/blitz-js/blitz/tree/canary/packages/eslint-config) config, but you can remove it safely. [Learn More](https://eslint.org).
+- **Husky**: It adds [githooks](https://git-scm.com/docs/githooks), little pieces of code that get executed when certain Git events are triggerd. For example, `pre-commit` is triggered just before a commit is created. You can see the current hooks inside `.husky/`. If are having problems commiting and pushing, check out ther [troubleshooting](https://typicode.github.io/husky/#/?id=troubleshoot) guide. [Learn More](https://typicode.github.io/husky).
+- **Prettier**: It formats your code to look the same everywhere. You can configure it via the `.prettierrc` file. The `.prettierignore` contains the files that should be ignored by Prettier; useful when you have large files or when you want to keep a custom formatting. [Learn More](https://prettier.io).
+
+## Learn more
+
+Read the [Blitz.js Documentation](https://blitzjs.com/docs/getting-started) to learn more.
+
+The Blitz community is warm, safe, diverse, inclusive, and fun! Feel free to reach out to us in any of our communication channels.
+
+- [Website](https://blitzjs.com/)
+- [Discord](https://discord.blitzjs.com/)
+- [Report an issue](https://github.com/blitz-js/blitz/issues/new/choose)
+- [Forum discussions](https://github.com/blitz-js/blitz/discussions)
+- [How to Contribute](https://blitzjs.com/docs/contributing)
+- [Sponsor or donate](https://github.com/blitz-js/blitz#sponsors-and-donations)
