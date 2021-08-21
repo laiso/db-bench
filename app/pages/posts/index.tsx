@@ -72,6 +72,7 @@ export async function getStaticProps(context) {
 
   return {
     props: { posts, hasMore },
+    revalidate: 60,
   }
 }
 
